@@ -1,0 +1,52 @@
+import 'package:flutter/material.dart';
+
+class DashboardHeader extends StatelessWidget {
+  const DashboardHeader({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.all(16),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
+          // Bên trái: lời chào (Expanded để text dài không làm tràn Row)
+          const Expanded(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  'Hello, User 👋',
+                  style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                ),
+                SizedBox(height: 4),
+                Text(
+                  'Welcome back to your dashboard',
+                  style: TextStyle(color: Colors.grey),
+                ),
+              ],
+            ),
+          ),
+          // Bên phải: icon notification + badge
+          Stack(
+            clipBehavior: Clip.none,
+            children: const [
+              Icon(
+                Icons.notifications,
+                size: 28,
+              ),
+              Positioned(
+                right: -2,
+                top: -2,
+                child: CircleAvatar(
+                  radius: 6,
+                  backgroundColor: Colors.red,
+                ),
+              ),
+            ],
+          ),
+        ],
+      ),
+    );
+  }
+}
